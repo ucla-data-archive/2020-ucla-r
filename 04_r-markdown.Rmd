@@ -60,17 +60,18 @@ pages.
 
 ## Creating an R Markdown file
 
-Within RStudio, click File &rarr; New File &rarr; R Markdown and
+* Within RStudio, click File &rarr; New File &rarr; R Markdown and
 you'll get a dialog box like this:
 
 ![](../fig/New_R_Markdown.png)
 
-You can stick with the default (HTML output), but give it a title.
+* You can stick with the default (HTML output), but give it a title.
 
 
 ## Basic components of R Markdown
 
-The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. You can use the header to give your document a title, author, date, and tell it that you're going to want
+* The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. 
+* You can use the header to give your document a title, author, date, and tell it that you're going to want
 to produce html output (in other words, a web page).
 
 ```
