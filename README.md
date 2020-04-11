@@ -2,4 +2,4 @@
 
 Lecture notes &amp; code for workshop.
 
-* April 11: [Basics of R](basics-of-r.Rmd)
+* April 11: [Basics of R](basics-of-r.html)
