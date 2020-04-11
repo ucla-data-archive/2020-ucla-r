@@ -17,12 +17,6 @@ keypoints:
 source: Rmd
 ---
 
-```{r chunk_options, include=FALSE}
-source("../bin/chunk-options.R")
-knitr_fig_path("15-")
-```
-
-
 ## Data analysis reports
 
 * Data analysts tend to write a lot of reports, describing their
@@ -45,14 +39,11 @@ data, you can just re-compile the report and get the new or corrected
 results. 
 
 * The key R package is [`knitr`](http://yihui.name/knitr/). 
-   * It allows you
-to create a document that is a mixture of text and chunks of
+   * It allows you to create a document that is a mixture of text and chunks of
 code. 
 * When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
-
 * This sort of idea has been called **literate programming**.
-
 * `knitr` allows you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
 with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
 pages.
@@ -60,11 +51,7 @@ pages.
 
 ## Creating an R Markdown file
 
-* Within RStudio, click File &rarr; New File &rarr; R Markdown and
-you'll get a dialog box like this:
-
-![](../fig/New_R_Markdown.png)
-
+* Within RStudio, click <kbd>File</kbd> <kbd>New File</kbd> <kbd>R Markdown</kbd>
 * You can stick with the default (HTML output), but give it a title.
 
 
@@ -83,42 +70,27 @@ output: html_document
 ---
 ```
 
-You can delete any of those fields if you don't want them
-included. The double-quotes aren't strictly _necessary_ in this case.
-They're mostly needed if you want to include a colon in the title.
+* Fields are optional - you can delete the ones you don't want
+* Double quotes optional needed if you include colon
+* RStudio creates the document with some example text to get you
+started. 
+* Note below that there are chunks like
 
-RStudio creates the document with some example text to get you
-started. Note below that there are chunks like
-
-<pre>
-&#96;&#96;&#96;{r}
+```{r cars-example-code}
 summary(cars)
-&#96;&#96;&#96;
-</pre>
+```
 
-These are chunks of R code that will be executed by `knitr` and replaced
-by their results. More on this later.
-
-Also note the web address that's put between angle brackets (`< >`) as
-well as the double-asterisks in `**Knit**`. This is
-[Markdown](http://daringfireball.net/projects/markdown/syntax).
+* This is a code chunk that will be run by `knitr` and output the results inline. 
 
 ## Markdown
 
-Markdown is a system for writing web pages by marking up the text much
-as you would in an email rather than writing html code. The marked-up
-text gets _converted_ to html, replacing the marks with the proper
-html code.
+* Markdown is a system for writing web pages by marking up the text with symbols like asterick, pound, underscore 
+* The marked-up text gets _converted_ to html, replacing the marks with the proper html code.
 
-For now, let's delete all of the stuff that's there and write a bit of
-markdown.
-
-You make things **bold** using two asterisks, like this: `**bold**`,
-and you make things _italics_ by using underscores, like this:
+* To see how this work let's delete all of the dummy text that was generated when we created the rmarkdown document and write some markdown. 
+* To make things **bold** using two asterisks around what you want to bold, like this: `**bold**`, and you make things _italics_ by using underscores, like this:
 `_italics_`.
-
-You can make a bulleted list by writing a list with hyphens or
-asterisks, like this:
+* You can make a bulleted list by writing a list with hyphens or asterisks, like this:
 
 ```
 * bold with double-asterisks
@@ -134,17 +106,16 @@ or like this:
 - code-type font with backticks
 ```
 
-Each will appear as:
+* Each will appear as:
 
 - bold with double-asterisks
 - italics with underscores
 - code-type font with backticks
 
-You can use whatever method you prefer, but *be consistent*. This maintains the
-readability of your code.
+* You can use whatever method you prefer, but *be consistent*. This maintains the readability of your code.
 
-You can make a numbered list by just using numbers. You can even use the
-same number over and over if you want:
+* You can make a **numbered list** by just using numbers.
+* You can even use the same number over and over if you want:
 
 ```
 1. bold with double-asterisks
@@ -158,8 +129,7 @@ This will appear as:
 1. italics with underscores
 1. code-type font with backticks
 
-You can make section headers of different sizes by initiating a line
-with some number of `#` symbols:
+* Make section headers of different sizes by putting `#` symbols in front of the text, like so: 
 
 ```
 # Title
@@ -168,8 +138,10 @@ with some number of `#` symbols:
 #### Sub-sub section
 ```
 
-You _compile_ the R Markdown document to an html webpage by clicking
-the "Knit" button in the upper-left.
+* _compile_ the R Markdown document to html by clicking <kbd>Knit</kbd> button in the upper-left.
+* You might have to install some packages, hit ok and let RStudio install packages. 
+
+* Ok now let's try challenge 1 
 
 > ## Challenge 1
 >
@@ -209,15 +181,12 @@ the "Knit" button in the upper-left.
 
 ## A bit more Markdown
 
-You can make a hyperlink like this:
-`[text to show](http://the-web-page.com)`.
-
-You can include an image file like this: `![caption](http://url/for/file)`
-
-You can do subscripts (e.g., F~2~) with `F~2~` and superscripts (e.g.,
+* You can make a hyperlink like this: `[text to show](http://the-web-page.com)`.
+* You can include an image file like this: `![caption](http://url/for/file)`
+* You can do subscripts (e.g., F~2~) with `F~2~` and superscripts (e.g.,
 F^2^) with `F^2^`.
 
-If you know how to write equations in
+* If you know how to write equations in
 [LaTeX](http://www.latex-project.org/), you can use `$ $` and `$$ $$` to insert math equations, like
 `$E = mc^2$` and
 
@@ -225,7 +194,7 @@ If you know how to write equations in
 $$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$
 ```
 
-You can review Markdown syntax by navigating to the
+* You can review Markdown syntax by navigating to the
 "Markdown Quick Reference" under the "Help" field in the 
 toolbar at the top of RStudio.
 
@@ -236,18 +205,15 @@ mixing markdown with chunks of code. This is R Markdown. When
 processed, the R code will be executed; if they produce figures, the
 figures will be inserted in the final document.
 
-The main code chunks look like this:
+* The main code chunks look like this:
 
-<pre>
-&#96;&#96;&#96;{r load_data}
-gapminder <- read.csv("gapminder.csv")
-&#96;&#96;&#96;
-</pre>
+```{r load_data, eval=FALSE}
+gapminder <- read_csv("gapminder.csv")
+```
 
-That is, you place a chunk of R code between <code>&#96;&#96;&#96;{r chunk_name}</code>
-and <code>&#96;&#96;&#96;</code>. You should give each chunk
-a unique name, as they will help you to fix errors and, if any graphs are
-produced, the file names are based on the name of the code chunk that
+* That is, you place a chunk of R code between <code>&#96;&#96;&#96;{r chunk_name}</code>
+and <code>&#96;&#96;&#96;</code>. 
+* You should give each chunk a unique name, as they will help you to fix errors and, if any graphs are produced, the file names are based on the name of the code chunk that
 produced them.
 
 > ## Challenge 2
@@ -283,56 +249,20 @@ produced them.
 
 ## How things get compiled
 
-When you press the "Knit" button, the R Markdown document is
+* When you press the "Knit" button, the R Markdown document is
 processed by [`knitr`](http://yihui.name/knitr) and a plain Markdown
 document is produced (as well as, potentially, a set of figure files): the R code is executed
 and replaced by both the input and the output; if figures are
 produced, links to those figures are included.
-
-The Markdown and figure documents are then processed by the tool
+* The Markdown and figure documents are then processed by the tool
 [`pandoc`](http://pandoc.org/), which converts the Markdown file into an
 html file, with the figures embedded.
 
-```{r rmd_to_html_fig, fig.width=8, fig.height=3, fig.align="left", echo=FALSE}
-par(mar=rep(0, 4), bty="n", cex=1.5)
-plot(0, 0, type="n", xlab="", ylab="", xaxt="n", yaxt="n",
-     xlim=c(0, 100), ylim=c(0, 100))
-xw <- 10
-yh <- 35
-xm <- 12
-ym <- 50
-rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
-text(xm, ym, ".Rmd")
-
-xm <- 50
-ym <- 80
-rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
-text(xm, ym, ".md")
-xm <- 50; ym <- 25
-for(i in c(2, 0, -2))
-    rect(xm-xw/2+i, ym-yh/2+i, xm+xw/2+i, ym+yh/2+i, lwd=2,
-         border="black", col="white")
-text(xm-2, ym-2, "figs/")
-
-xm <- 100-12
-ym <- 50
-rect(xm-xw/2, ym-yh/2, xm+xw/2, ym+yh/2, lwd=2)
-text(xm, ym, ".html")
-
-arrows(22, 50, 38, 50, lwd=2, col="slateblue", len=0.1)
-text((22+38)/2, 60, "knitr", col="darkslateblue", cex=1.3)
-
-arrows(62, 50, 78, 50, lwd=2, col="slateblue", len=0.1)
-text((62+78)/2, 60, "pandoc", col="darkslateblue", cex=1.3)
-```
-
-
-
+![How R markdown gets compiled](rmarkdown_compiled_process.png)
 
 ## Chunk options
 
-There are a variety of options to affect how the code chunks are
-treated. Here are some examples:
+*Options that affect how our code chunks are treated. Examples:
 
 - Use `echo=FALSE` to avoid having the code itself shown.
 - Use `results="hide"` to avoid having any results printed.
@@ -342,30 +272,25 @@ treated. Here are some examples:
 - Use `fig.height` and `fig.width` to control the size of the figures
   produced (in inches).
 
-So you might write:
+Write:
 
-<pre>
-&#96;&#96;&#96;{r load_libraries, echo=FALSE, message=FALSE}
+```{r load_libraries, echo=FALSE, message=FALSE}
 library("dplyr")
 library("ggplot2")
-&#96;&#96;&#96;
-</pre>
+```
 
-Often there will be particular options that you'll want to use
+* Often there will be particular options that you'll want to use
 repeatedly; for this, you can set _global_ chunk options, like so:
 
-<pre>
-&#96;&#96;&#96;{r global_options, echo=FALSE}
+```{r global_options, echo=FALSE}
 knitr::opts_chunk$set(fig.path="Figs/", message=FALSE, warning=FALSE,
                       echo=FALSE, results="hide", fig.width=11)
-&#96;&#96;&#96;
-</pre>
+```
 
-The `fig.path` option defines where the figures will be saved. The `/`
-here is really important; without it, the figures would be saved in
+* `fig.path` option defines where the figures will be saved.
+* `/` here is really important; without it, the figures would be saved in
 the standard place but just with names that begin with `Figs`.
-
-If you have multiple R Markdown files in a common directory, you might
+* If you have multiple R Markdown files in a common directory, you might
 want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 
@@ -386,28 +311,26 @@ names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
 > {: .solution}
 {: .challenge}
 
-You can review all of the `R` chunk options by navigating to
+* You can review all of the `R` chunk options by navigating to
 the "R Markdown Cheat Sheet" under the "Cheatsheets" section 
 of the "Help" field in the toolbar at the top of RStudio.
 
 
 ## Inline R code
 
-You can make _every_ number in your report reproducible. Use
-<code>&#96;r</code> and <code>&#96;</code> for an in-line code chunk,
-like so: <code>&#96;r round(some_value, 2)&#96;</code>. The code will be
-executed and replaced with the _value_ of the result.
+* You can make _every_ number in your report reproducible. 
+* Use <code>&#96;r</code> and <code>&#96;</code> for an in-line code chunk,
+like so: <code>&#96;r round(some_value, 2)&#96;</code>. 
+* The code will be executed and replaced with the _value_ of the result.
+* Don't let these in-line chunks get split across lines.
 
-Don't let these in-line chunks get split across lines.
-
-Perhaps precede the paragraph with a larger code chunk that does
+* Perhaps precede the paragraph with a larger code chunk that does
 calculations and defines variables, with `include=FALSE` for that larger
 chunk (which is the same as `echo=FALSE` and `results="hide"`).
 
-Rounding can produce differences in output in such situations. You may want
+* Rounding can produce differences in output in such situations. You may want
 `2.0`, but `round(2.03, 1)` will give just `2`.
-
-The
+* The
 [`myround`](https://github.com/kbroman/broman/blob/master/R/myround.R)
 function in the [R/broman](https://github.com/kbroman/broman) package handles
 this.
@@ -427,9 +350,10 @@ this.
 
 ## Other output options
 
-You can also convert R Markdown to a PDF or a Word document. Click the
-little triangle next to the "Knit" button to get a drop-down
-menu. Or you could put `pdf_document` or `word_document` in the initial header
+* You can also convert R Markdown to a PDF or a Word document. 
+* Click the little triangle next to the "Knit" button to get a drop-down
+menu.
+* Or you could put `pdf_document` or `word_document` in the initial header
 of the file.
 
 > ## Tip: Creating PDF documents
