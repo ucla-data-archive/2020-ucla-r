@@ -1,71 +1,73 @@
 ---
-title: Producing Reports With knitr
-teaching: 60
-exercises: 15
-questions:
-- "How can I integrate software and reports?"
+title: "Producing Reports With knitr"
+keypoints:
+- Mix reporting written in R Markdown with software written in R.
+- Specify chunk options to control formatting.
+- Use `knitr` to convert these documents into PDF and other formats.
 objectives:
 - Understand the value of writing reproducible reports
 - Learn how to recognise and compile the basic components of an R Markdown file
-- Become familiar with R code chunks, and understand their purpose, structure and options 
-- Demonstrate the use of inline chunks for weaving R outputs into text blocks, for example when discussing the results of some calculations
+- Become familiar with R code chunks, and understand their purpose, structure and
+  options
+- Demonstrate the use of inline chunks for weaving R outputs into text blocks, for
+  example when discussing the results of some calculations
 - Be aware of alternative output formats to which an R Markdown file can be exported
-keypoints:
-- "Mix reporting written in R Markdown with software written in R."
-- "Specify chunk options to control formatting."
-- "Use `knitr` to convert these documents into PDF and other formats."
+output:
+  html_document:
+    df_print: paged
+questions: How can I integrate software and reports?
 source: Rmd
+teaching: 60
+exercises: 15
 ---
 
 ## Data analysis reports
 
-* Data analysts tend to write a lot of reports, describing their
-analyses and results, for their collaborators or to document their
-work for future reference.
-* Beginners often write R scripts 
-* Emailing scripts & graphs
-* Can be problematic and cumbersome 
-* writing reports in Word or [LaTeX](http://www.latex-project.org/) can incoporate analysis and ouput graphs together
-* But tweaking report and parameters can be difficult, "whack a mole" fixing mistakes in code then report, copy paste.
-* Having web page using R Markdown helps
-* Changing formatting or analysis is much easier and easier to reproduce
+* Data analysts write a lot of reports, describing their
+analyses and results.
+* Beginners often write R scripts & email those scripts & graphs around.
+* This can be problematic and cumbersome 
+* Writing reports in Word or [LaTeX](http://www.latex-project.org/) can incoporate analysis and ouput graphs together in one doc.
+* But tweaking the report and parameters can be difficult:
+  * have to fix or change code, run it, get output and copy over to document
+  * will have to do this multiple times as you tweak, gets confusing
+* Having the code, analysis and output in one document that is runable helps
+* It makes changing formatting or analysis much easier and is easier to re-run with changes (no copying and pasting)
 
 ## Literate programming
 
-* Ideally analysis reports are _reproducible_ documents: 
+* Ideally analysis reports are _reproducible_ documents 
 * If an
 error is discovered, or if some additional subjects are added to the
 data, you can just re-compile the report and get the new or corrected
 results. 
-
 * The key R package is [`knitr`](http://yihui.name/knitr/). 
-   * It allows you to create a document that is a mixture of text and chunks of
+   * It lets you to create a document that is a mixture of text and chunks of
 code. 
 * When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
 * This sort of idea has been called **literate programming**.
-* `knitr` allows you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
-with R. [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web
-pages.
+* `knitr` lets you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
+with R. 
+* [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages (the name is a play on the word [markup](https://en.wikipedia.org/wiki/Markup_language) where you annotate a document with info to display text, e.g. html tags)
 
 
 ## Creating an R Markdown file
 
 * Within RStudio, click <kbd>File</kbd> <kbd>New File</kbd> <kbd>R Markdown</kbd>
-* You can stick with the default (HTML output), but give it a title.
+* You can stick with the default (HTML output), but add a title and yourself as the author.
 
 
 ## Basic components of R Markdown
 
-* The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen. 
-* You can use the header to give your document a title, author, date, and tell it that you're going to want
-to produce html output (in other words, a web page).
+* The initial chunk of text (header) contains instructions for R to specify what kind of document will be created, and the options chosen.
+* You can use the header to give your document a title, author, date, and tell it that you're going to want to produce html output (in other words, a web page).
 
 ```
 ---
 title: "Initial R Markdown document"
-author: "Karl Broman"
-date: "April 23, 2015"
+author: "Tim DEnnis"
+date: "May 1, 2020"
 output: html_document
 ---
 ```
@@ -84,13 +86,16 @@ summary(cars)
 
 ## Markdown
 
-* Markdown is a system for writing web pages by marking up the text with symbols like asterick, pound, underscore 
+* A system for writing web pages by marking up the text with symbols like asterick, pound, underscore 
 * The marked-up text gets _converted_ to html, replacing the marks with the proper html code.
 
-* To see how this work let's delete all of the dummy text that was generated when we created the rmarkdown document and write some markdown. 
-* To make things **bold** using two asterisks around what you want to bold, like this: `**bold**`, and you make things _italics_ by using underscores, like this:
+
+* Let's see how this works:
+
+1. delete all of the dummy text that was generated when we created the rmarkdown document and write some markdown. 
+2. make things **bold** using two asterisks around what you want to bold, like this: `**bold**`, and you make things _italics_ by using underscores, like this:
 `_italics_`.
-* You can make a bulleted list by writing a list with hyphens or asterisks, like this:
+3. You can make a bulleted list by writing a list with hyphens or asterisks, like this:
 
 ```
 * bold with double-asterisks
@@ -112,8 +117,7 @@ or like this:
 - italics with underscores
 - code-type font with backticks
 
-* You can use whatever method you prefer, but *be consistent*. This maintains the readability of your code.
-
+*  You can use whatever method you prefer, but *be consistent*. This maintains the readability of your code.
 * You can make a **numbered list** by just using numbers.
 * You can even use the same number over and over if you want:
 

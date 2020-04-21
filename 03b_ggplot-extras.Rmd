@@ -1,0 +1,130 @@
+---
+title: "gapminder extra"
+author: "Tim Dennis"
+date: "3/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## R Markdown
+
+Let's first load packages we'll need: 
+
+```{r load-gap}
+library(tidyverse)
+library(gapminder)
+library(ggrepel)
+```
+
+
+```{r look-gapminder}
+gapminder
+```
+
+
+For this exercise, I want to look at only `2007` data. How do we do this in `dplyr`? What function do we use? 
+
+Right. We filter `gapminder` by year. 
+
+```{r filter-gap-year}
+gapminder %>% 
+  filter(year == "2007")
+```
+
+We could save this as a new object `gapminder2007 <- gapminger %>% ...`, but let's pipe the output of the above right into ggplot. Here I want to plot the log of `gdpPercap` against `lifeExp`.
+
+```{r gapminder2007-ggplot}
+gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(log(gdpPercap), lifeExp)) +
+  geom_point()
+```
+
+Let's add color by country to our scaterplot. At the same time, I'll add a `size` and `alpha` attribute to the points. Note, this will obscure our graph b/c there are too many countries and it overwhelms the legend and chart. We'll solve that as we move along. 
+
+```{r gap}
+gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(log(gdpPercap), lifeExp)) +
+  geom_point(
+    aes(color = country),
+    size = 3.5,
+    alpha = .9) +
+  theme_minimal(14) +
+  #theme(panel.grid.minor = element_blank()) +
+  labs(
+    x = "log(GDP per capita)",
+    y = "life expectancy")
+```
+
+Ok, now we are going to add the country as an annotation to the plot. To do this we are going to use the ggrepel package. 
+
+```{r pressure, echo=FALSE}
+gapminder %>%
+  filter(year == 2007) %>%
+  ggplot(aes(log(gdpPercap), lifeExp)) +
+  geom_point(
+    size = 3.5,
+    alpha = .9,
+    shape = 21,
+    col = "white",
+    fill = "#0162B2") +
+  geom_text_repel(aes(label = country)) +
+  theme_minimal(14) +
+  theme(panel.grid.minor = element_blank()) +
+  labs(
+    x = "log(GDP per capita)",
+    y = "life expectancy")
+```
+
+## Your Turn 2
+
+Use `sample()` to select 10 random countries to plot
+(run the set.seed() line  rst if you want the same
+results)
+In the `mutate()` call, check if country is one of the
+countries in ten_countries. If it's not, make the label
+an empty string (""),
+Add the text repel geom from ggrepel. Set the label
+aesthetic using the variable just created in `mutate()`
+
+```{r sample10}
+library(gapminder)
+library(ggrepel)
+set.seed(42)
+
+ten_countries <- gapminder$country %>%
+  levels() %>%
+  sample(10)
+
+ten_countries
+```
+
+```{r}
+p1 <- gapminder %>%
+  filter(year == 2007) %>%
+  mutate(label = ifelse(country %in% ten_countries, as.character(country), "")) %>%
+  ggplot(aes(log(gdpPercap), lifeExp)) +
+  geom_point(size = 3.5,
+             alpha = .9,
+             shape = 21,
+             col = "white",
+             fill = "#0162B2"
+)
+p1
+```
+
+```{r}
+scatter_plot <- p1 +
+  geom_text_repel(aes(label = label), size = 4.5, point.padding = .2, box.padding = .3, force = 1, min.segment.length = 0) +
+  theme_minimal(14) +
+  theme(legend.position = "none", panel.grid.minor = element_blank()
+) +
+  labs( x = "log(GDP per capita)", y = "life expectancy")
+
+scatter_plot
+```
