@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-## R Markdown
+## GGPLOT
 
 Let's first load packages we'll need: 
 
@@ -25,6 +25,9 @@ library(ggrepel)
 gapminder
 ```
 
+Show worked example firsts. 
+
+Show simpliest version.
 
 For this exercise, I want to look at only `2007` data. How do we do this in `dplyr`? What function do we use? 
 
@@ -61,7 +64,7 @@ gapminder %>%
     y = "life expectancy")
 ```
 
-Ok, now we are going to add the country as an annotation to the plot. To do this we are going to use the ggrepel package. 
+Ok, now we are going to add the country as an annotation to the plot. To do this we are going to use the `ggrepel` package. This package gives a function, `geom_text_repel`, that adds text directly to the plot. It takes an argument for mapping what we want to annotate. Here, we'll add an `aes` of label for country.  
 
 ```{r pressure, echo=FALSE}
 gapminder %>%
@@ -81,7 +84,8 @@ gapminder %>%
     y = "life expectancy")
 ```
 
-## Your Turn 2
+Still very busy. Next step is to take this approach but sample 10 countries and label the graph with those.
+
 
 Use `sample()` to select 10 random countries to plot
 (run the set.seed() line  rst if you want the same
