@@ -14,40 +14,81 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Let's first load packages we'll need: 
 
-```{r load-gap}
+```{r load-gap, message=FALSE}
 library(tidyverse)
 library(gapminder)
 library(ggrepel)
 ```
 
+We'll be using the gapminder data we are familiar with. We can look at the top of that dataframe by piping it to `head()`.
 
 ```{r look-gapminder}
-gapminder
+gapminder %>% head()
 ```
 
-Show worked example firsts. 
+Another trick to get the gapminder to show up as an object in your environment in RStudio is to run `data(gapminder)`:
 
-Show simpliest version.
+```{r load_gapminder}
+data("gapminder")
+```
 
-For this exercise, I want to look at only `2007` data. How do we do this in `dplyr`? What function do we use? 
+Remember to get help in R we can run a question mark before the function we want help on: 
 
-Right. We filter `gapminder` by year. 
+```{r get-help, eval=FALSE}
+?data
+```
+
+Let's look at what we will building up to in this episode. It's a scatter plot of countries by GDP per capita and life expectancy for the year 2007. To get a sense of countries in the graph we'll pick 10 countries and annotate the plot with where they are on the graph. We'll color and size the dots and add some labels. Let's see what it looks like:  
+
+```{r sample10_countries, echo=FALSE, message=FALSE}
+set.seed(42)
+
+ten_countries <- gapminder$country %>%
+  levels() %>%
+  sample(10)
+```
+
+```{r scatter-plot, echo=FALSE}
+gdp_lifeexp <- gapminder %>%
+  filter(year == 2007) %>%
+  mutate(label = ifelse(country %in% ten_countries, as.character(country), "")) %>%
+  ggplot(aes(log(gdpPercap), lifeExp)) +
+  geom_point(size = 3.5,
+             alpha = .9,
+             shape = 21,
+             col = "white",
+             fill = "#2774AE"
+) +
+  geom_text_repel(aes(label = label), size = 4.5, point.padding = .2, box.padding = .3, force = 1, min.segment.length = 0) +
+  theme_minimal(14) +
+  theme(legend.position = "none", panel.grid.minor = element_blank()
+) +
+  labs( x = "log(GDP per capita)", y = "life expectancy")
+
+gdp_lifeexp
+```
+
+Ok, we know what we are aiming for, how do we get there? Any ideas? Intuitions? First steps?
+
+Right. We need to prepare the data first! We'll filter it by the year 2007. Who remember what function we use to filter data?
 
 ```{r filter-gap-year}
 gapminder %>% 
   filter(year == "2007")
 ```
 
-We could save this as a new object `gapminder2007 <- gapminger %>% ...`, but let's pipe the output of the above right into ggplot. Here I want to plot the log of `gdpPercap` against `lifeExp`.
+We could save this as a new object `gapminder2007 <- gapminger %>% ...`, but let's pipe the output of the above right into ggplot. This is a quick way to explore your data first before saving objects in your environment. Here we'll plot the log of `gdpPercap` against `lifeExp`.
 
-```{r gapminder2007-ggplot}
+```{r gapminder2007_ggplot}
 gapminder %>%
   filter(year == 2007) %>%
   ggplot(aes(log(gdpPercap), lifeExp)) +
   geom_point()
 ```
 
-Let's add color by country to our scaterplot. At the same time, I'll add a `size` and `alpha` attribute to the points. Note, this will obscure our graph b/c there are too many countries and it overwhelms the legend and chart. We'll solve that as we move along. 
+Looks familiar right! But we have no sense of what countries are plotted and where they are. At this point, we often add a third variable to the plot through color. So we will color our plot by a variable in our data, but this often is problematic b/c it adds mental burden to our plot. Let's show this with countries. 
+
+simplify aesthetics and highlightdesign 
 
 ```{r gap}
 gapminder %>%
@@ -56,15 +97,10 @@ gapminder %>%
   geom_point(
     aes(color = country),
     size = 3.5,
-    alpha = .9) +
-  theme_minimal(14) +
-  #theme(panel.grid.minor = element_blank()) +
-  labs(
-    x = "log(GDP per capita)",
-    y = "life expectancy")
+    alpha = .9) 
 ```
 
-Ok, now we are going to add the country as an annotation to the plot. To do this we are going to use the `ggrepel` package. This package gives a function, `geom_text_repel`, that adds text directly to the plot. It takes an argument for mapping what we want to annotate. Here, we'll add an `aes` of label for country.  
+The legend overtakes our plot and become really difficult to understand. Instead of overloading our plots we should strive to simplify the aesthetics and when at all possible design without using legends. We can do this with direct labelling. To label the plot we'll use the `ggrepel` package. It give us two functions:  `geom_text_repel()` & `geom_label_repel()`.`geom_text_repel` adds text directly to the plot. It takes an argument for mapping what we want to annotate. Here, we'll add an `aes` of label for country.  We'll also change the size of the dots, set a transparency (alpha), add a color and fill. What does color do? Fill? Yes, colors around the edge of the dots and fill fills the dot with color. We'll use the UCLA blue for the color. 
 
 ```{r pressure, echo=FALSE}
 gapminder %>%
@@ -75,30 +111,20 @@ gapminder %>%
     alpha = .9,
     shape = 21,
     col = "white",
-    fill = "#0162B2") +
-  geom_text_repel(aes(label = country)) +
-  theme_minimal(14) +
+    fill = "#2774AE") +
+  geom_text_repel(aes(label = country)) 
+```
+
+
+theme_minimal(14) +
   theme(panel.grid.minor = element_blank()) +
   labs(
     x = "log(GDP per capita)",
     y = "life expectancy")
-```
-
 Still very busy. Next step is to take this approach but sample 10 countries and label the graph with those.
 
-
-Use `sample()` to select 10 random countries to plot
-(run the set.seed() line  rst if you want the same
-results)
-In the `mutate()` call, check if country is one of the
-countries in ten_countries. If it's not, make the label
-an empty string (""),
-Add the text repel geom from ggrepel. Set the label
-aesthetic using the variable just created in `mutate()`
-
+Better, but still overwhelming. Next step. We want to subset the data by 10 countries to reduce the cognitive load on the graph. We can do this any number of ways, but here we'll use the `sample()` function to randomly select ten. We'll use `set.seed()` so it sets our countries to the same 10 countries if we run the function again. If you want different countries each time you run the code, remove or comment out the `set.seed()` line. 
 ```{r sample10}
-library(gapminder)
-library(ggrepel)
 set.seed(42)
 
 ten_countries <- gapminder$country %>%
@@ -108,27 +134,63 @@ ten_countries <- gapminder$country %>%
 ten_countries
 ```
 
-```{r}
-p1 <- gapminder %>%
+Next step is to use this `ten_countries` vector to create a new variable in our dataframe that will become the label we use.  In the `mutate()` call, check if country is one of the
+countries in ten_countries. If it's not, make the label
+an empty string (""). I'll assign this to a new dataframe called `gapminder_label`. 
+
+
+```{r gap_labeled}
+gapminder_label <- gapminder %>%
   filter(year == 2007) %>%
-  mutate(label = ifelse(country %in% ten_countries, as.character(country), "")) %>%
+  mutate(label = ifelse(country %in% ten_countries, as.character(country), "")) 
+```
+
+Let's look at the data. 
+
+```{r}
+gapminder_label
+```
+
+For the last part we'll plot `gapminder_label` and add our country labels. 
+
+```{r plot_gap_labeled}
+gapminder_label %>%   
   ggplot(aes(log(gdpPercap), lifeExp)) +
   geom_point(size = 3.5,
              alpha = .9,
              shape = 21,
              col = "white",
              fill = "#0162B2"
-)
-p1
+) +
+  geom_text_repel(aes(label = label), size = 4.5, point.padding = .2, box.padding = .3, force = 1, min.segment.length = 0) 
 ```
 
-```{r}
-scatter_plot <- p1 +
+Last bit. We will add theme elements. 
+
+```{r gapminder_label_theme}
+gapminder_label %>%   
+  ggplot(aes(log(gdpPercap), lifeExp)) +
+  geom_point(size = 3.5,
+             alpha = .9,
+             shape = 21,
+             col = "white",
+             fill = "#0162B2"
+) +
   geom_text_repel(aes(label = label), size = 4.5, point.padding = .2, box.padding = .3, force = 1, min.segment.length = 0) +
-  theme_minimal(14) +
+  theme_minimal(10) +
   theme(legend.position = "none", panel.grid.minor = element_blank()
 ) +
   labs( x = "log(GDP per capita)", y = "life expectancy")
 
-scatter_plot
 ```
+
+
+### Exercise 
+
+Think about what it would to alter the code to pick the maximimum, minimum, medium for lifeexp & gdp instead of random 10 countries. 
+
+```{r}
+gapminder %>% 
+  filter(gdpPercap == max(gdpPercap) | lifeExp == max(lifeExp))
+```
+
