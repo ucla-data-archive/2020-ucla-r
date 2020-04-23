@@ -1,0 +1,76 @@
+---
+title: "Intro to RMarkdown"
+author: "Leigh Phan"
+date: "4/23/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+**To create an R Markdown document in RStudio, select `File` > `New File` > `R Markdown`.
+
+
+### Headers & Quotes
+
+In Markdown, create headers using a hierachy, from H1, represented by `#` to H6, represented by `######`.
+
+# This is an <h1> tag
+### This is an <h3> tag
+###### This is an <h6> tag
+
+In a Markdown document, you can include quotes using the `>` before the line. For example:
+> 
+> -- Their Name
+
+
+### Text
+
+It's very easy to make some words **bold** and other words _italic_ with Markdown. You can even [link to a website!](https://ucla-data-archive.github.io/2020-04-10-ucla/)
+
+**This will be bold**
+_This will be italic_
+*This will also be italic*
+
+_You **can** combine them_
+
+
+### Lists
+You can create unordered lists:
+
+* Using 
+* bullet points
+  * Like
+  * these
+  
+You can also create ordered lists:
+
+1. One
+1. Two
+1. Three
+  1. 3a
+  1. 3b
+  
+## Exporting Rmarkdown
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+In order to export in RStudio, select the **Knit** button in the upper-left corner; in the drop-down, select a format and location to save the file. R Markdown files can be exported to a wide range of document types, including HTML, PDF, and MS Word. 
+
+Now you have the tools to create and produce a report including your text, data, code, figures, and more! We'll cover creating reports in more detail in our next workshop on May 1, 2020.
+
+
+Until then, enjoy exploring and creating with Markdown!
+
+_The following are supplemental guides_:
+
+* [RStudio Guide to Markdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf)
+  (Right-click the image to view larger version, or download a copy)
+* [GitHub Guide to Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+
+
