@@ -24,6 +24,13 @@ library(ggrepel)
 
 We'll be using the gapminder data we are familiar with. We can look at the top of that dataframe by piping it to `head()`.
 
+```{r}
+gapminder %>% 
+  group_by(continent, year) %>% 
+  summarize(mean_gdpPercap = mean(gdpPercap)) %>% 
+  ggplot(aes(x=year, y = mean_gdpPercap, color=continent)) + geom_point()
+```
+
 ```{r look-gapminder}
 gapminder %>% head()
 ```
@@ -117,15 +124,8 @@ gapminder %>%
   geom_text_repel(aes(label = country)) 
 ```
 
+Still very busy. Next, we want to subset the data by 10 countries to reduce the cognitive load on the graph. We can do this any number of ways, but here we'll use the `sample()` function to randomly select ten countries. We'll also use the `set.seed()` function so it sets our countries to the same 10 countries if we rerun the function. If you want different set of 10 countries each time you run the code, remove or comment out the `set.seed()` line. 
 
-theme_minimal(14) +
-  theme(panel.grid.minor = element_blank()) +
-  labs(
-    x = "log(GDP per capita)",
-    y = "life expectancy")
-Still very busy. Next step is to take this approach but sample 10 countries and label the graph with those.
-
-Better, but still overwhelming. Next step. We want to subset the data by 10 countries to reduce the cognitive load on the graph. We can do this any number of ways, but here we'll use the `sample()` function to randomly select ten. We'll use `set.seed()` so it sets our countries to the same 10 countries if we run the function again. If you want different countries each time you run the code, remove or comment out the `set.seed()` line. 
 ```{r sample10}
 set.seed(42)
 
@@ -136,9 +136,8 @@ ten_countries <- gapminder$country %>%
 ten_countries
 ```
 
-Next step is to use this `ten_countries` vector to create a new variable in our dataframe that will become the label we use.  In the `mutate()` call, check if country is one of the
-countries in ten_countries. If it's not, make the label
-an empty string (""). I'll assign this to a new dataframe called `gapminder_label`. 
+Next step is to use the `ten_countries` vector to create a new variable in our dataframe that will become the countries we label the plot with.  So, in the `mutate()` function, we check if  each country is one of the
+countries in `ten_countries`. If it's not, make that label row an empty string (""). If it is, we add the country to that row as a character. I'll assign the output of this code to a new called  `gapminder_label`. 
 
 
 ```{r gap_labeled}
@@ -147,13 +146,13 @@ gapminder_label <- gapminder %>%
   mutate(label = ifelse(country %in% ten_countries, as.character(country), "")) 
 ```
 
-Let's look at the data. 
+Let's look at the data. Click Next on the code chunk output in Rmarkdown until you see a country in the `label` column.
 
 ```{r}
 gapminder_label
 ```
 
-For the last part we'll plot `gapminder_label` and add our country labels. 
+Ok, we have a new dataframe with a column for the countries we want to add labels for dots on our scatterplot. We can now use this dataframe to label the graph. 
 
 ```{r plot_gap_labeled}
 gapminder_label %>%   
@@ -167,7 +166,7 @@ gapminder_label %>%
   geom_text_repel(aes(label = label), size = 4.5, point.padding = .2, box.padding = .3, force = 1, min.segment.length = 0) 
 ```
 
-Last bit. We will add theme elements. 
+This is a much easier graph to understand. Let's clean it up a bit by adjusting the grid, theme and labels.
 
 ```{r gapminder_label_theme}
 gapminder_label %>%   
@@ -186,3 +185,4 @@ gapminder_label %>%
 
 ```
 
+Ok, next step might be to change the countries. Say you want to specify ten countries manually? How would you go about this? 
