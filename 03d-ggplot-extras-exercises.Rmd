@@ -1,0 +1,35 @@
+---
+title: "GGPLOT extras exercises"
+author: "Tim Dennis"
+date: "4/24/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### Exercise 
+
+
+```{r load-gap, message=FALSE}
+library(tidyverse)
+library(gapminder)
+library(ggrepel)
+```
+
+Think about what it would to alter the code to pick the maximimum, minimum, medium for lifeexp & gdp instead of random 10 countries. Here's how you would get the max gdpPercap and lifeExp for gapminder. In the second step we took converted our factor variable country to 
+
+```{r}
+gap_min_max_med <- gapminder %>% 
+  filter(gdpPercap == max(gdpPercap) | lifeExp == max(lifeExp)) %>% 
+  gapminder$country %>% 
+  levels() 
+gap_min_max_med
+```
+
+```{r}
+as.character(gap_min_max_med$country)
+```
+
+

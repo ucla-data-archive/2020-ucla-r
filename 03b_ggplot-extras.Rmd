@@ -12,6 +12,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## GGPLOT
 
+CREDITS: Malcolm Barrett <https://github.com/malcolmbarrett/>
+
 Let's first load packages we'll need: 
 
 ```{r load-gap, message=FALSE}
@@ -182,15 +184,5 @@ gapminder_label %>%
 ) +
   labs( x = "log(GDP per capita)", y = "life expectancy")
 
-```
-
-
-### Exercise 
-
-Think about what it would to alter the code to pick the maximimum, minimum, medium for lifeexp & gdp instead of random 10 countries. 
-
-```{r}
-gapminder %>% 
-  filter(gdpPercap == max(gdpPercap) | lifeExp == max(lifeExp))
 ```
 
