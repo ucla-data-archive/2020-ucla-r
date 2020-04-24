@@ -1,0 +1,326 @@
+---
+title: "Intro to RMarkdown"
+author: "Leigh Phan"
+date: "4/23/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+**To create an R Markdown document in RStudio, select `File` > `New File` > `R Markdown`.
+
+
+### Headers
+
+In Markdown, create headers using a hierachy, from H1, represented by `#` to H6, represented by `######`.
+
+
+
+### Text
+
+
+It's very easy to make some words **bold** and other words _italic_ with Markdown. 
+
+
+### Lists
+You can create unordered lists:
+
+
+You can also create ordered lists:
+
+
+
+
+### Adding Code to Your R Markdown File
+When adding code (or a "code chunk") to your .Rmd file, the code is enclosed within the following:
+```{r}
+
+```
+
+
+* Remember that you can use the keyboard shortcut **Ctrl + Alt + I** (_*OS X*_: **Cmd + Option + I**)
+
+  
+## Exporting Rmarkdown
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+In order to export in RStudio, select the **Knit** button in the upper-left corner; in the drop-down, select a format and location to save the file. R Markdown files can be exported to a wide range of document types, including HTML, PDF, and MS Word. 
+
+Now you have the tools to create and produce a report including your text, data, code, figures, and more! We'll cover creating reports in more detail in our next workshop on May 1, 2020.
+
+
+Until then, enjoy exploring and creating with Markdown!
+
+_The following are supplemental guides_:
+
+* [RStudio Guide to Markdown](https://github.com/rstudio/cheatsheets/blob/master/rmarkdown-2.0.pdf)
+  (Right-click the image to view larger version, or download a copy)
+* [GitHub Guide to Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
+
+
+
+
+
+## Creating Plots Using ggplot2
+
+**ggplot2** is a library used in R to creative graphics and charts. The library is based on concepts of [The Grammar of Graphics by Leland Wilkinson](https://link.springer.com/book/10.1007%2F978-1-4757-3100-2), the idea that you can build every graph from same components:
+
+* a **data** set
+* a **coordinate system**
+* **geoms** -- visual marks that represent data points (short for "geometries")
+
+
+
+![Basics of Grammar of Graphics](f01_ggplot-grammar.png)
+
+("Grammar of Graphics" - hence the "GG" in "ggplot2"!)
+
+
+#### Let's get started with ggplot2 by loading the R Library, `ggplot2`:
+```{r}
+library(gapminder)
+library(ggplot2)
+
+```
+
+We'll be using the dataset from our previous lessons, **gapminder**, which is readily available with R. Let's take a look at the dataset using **`View`**:
+
+```{r}
+
+```
+
+We can see that the variables (column headers) in the gapminder dataset include the following:
+
+  * country
+  * continent
+  * year
+  * lifeExp (life expectancy)
+  * pop
+  * gdpPercap (Gross Domestic product)
+
+This is important to remember, so that when we begin creating graphics, we'll reference these in our code.
+
+Example: let's say, using gapminder data, we want to create a graph displaying the life expectancy of each country in relation to GDP per capita.
+
+![Life Expectancy based on GDP per capita](f02_01_lifeExp-gdp.png)
+**Observations**
+* What do you see when you look at this graphic?
+* How would you describe it?
+
+
+### Elements of a Chart
+
+```{r}
+
+
+
+```
+* `ggplot` knows that in order to create a chart, it requires `data` and a way to "map" the variables of that data to some aesthetics, or how we want it to look, which is specified by the argument `mapping` and the `aes` function.
+
+* By itself, the call to `ggplot` isn't enough to draw a figure:
+
+```{r}
+
+
+```
+
+We need to tell `ggplot` how we want to _visually represent the data_, which we do by adding a new **geom** (or 'geometry') layer. In this example, we use `geom_point`, which tells `ggplot` we want to visually represent the relationship between **x** and **y** as a scatterplot of points:
+```{r}
+
+
+```
+
+#### Challenge Set 1
+1. Modify the example so that the figure shows how life expectancy has changed over time.
+2. In the previous examples and challenge we used the `aes` function to tell the scatterplot **geom** about the **x** and **y** locations of each point. Another _aesthetic_ property we can modify is the point _color_. Modify the code from the previous challenge to **color** the points by the "continent" column. What trends do you see in the data? Are they what you expected?
+
+
+## Layers
+* Using a scatterplot probably isn’t the best for visualizing change over time. Instead, let’s tell ggplot to visualize the data as a line plot.
+
+![Gapminder: Life Expectancy Over Time](f03_lifeExp-year.png)
+
+* To our current chart, we'll add another aesthetic, called `**by**` and set it to one of the data variables, `country`
+* From our previous challenge, let's continue to differentiate each continent by color
+
+```{r}
+
+
+
+```
+
+* What do you think we need to change in our code in order to create a line graph (instead of a scatterplot)?
+* `by` aesthetic tells `ggplot` to draw a line for each country
+
+
+What if we want to visualize both **lines** and **points** on the plot?
+```{r}
+
+
+```
+
+
+It's important to note that each layer is drawn on top of previous layer. In this example, the points have been drawn _on top_ of the lines. For example:
+
+```{r}
+
+
+
+```
+
+In this example, the _aesthetic_ mapping of **color** was moved from the global plot options in `ggplot` to the `**geom_line**` layer, so it no longer applies to the points. Now we can clearly see taht points are drawn on top of the lines.
+
+#### Challenge Set 2
+1. Switch the order of the point and line layers from the previous example. What happened?
+
+### Setting an aesthetic to a value instead of mapping
+So far we've seen how to use an aes (such as color) as a mapping to a variable in the data.
+
+```{r}
+# geom_line(mapping = aes(color=continent))
+```
+
+But what if we want to change the color of all lines to blue?
+```{r}
+# geom_line(mapping=aes(color="blue"))
+```
+Since we don't want to create a mapping to a specific variable, we move the color specification outside of the `aes()` function. e.g.:
+```{r}
+# geom_line(color="blue")
+```
+
+
+## Transformations & Statistics
+```{r}
+# ggplot(data = gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) + geom_point()
+```
+
+
+##### Changing scale of a graph
+* Currently hard to see relationship between points due to outliers
+* Can change **scale** of units on x-axis using `scale` functions
+* Modify transparency of points using `alpha` function
+* `log10` function applied transformation to values before plotting, so each multiple of 10 corresponds to an increase in 1 on the transformed scale (e.g. a GDP per capita of 1,000 is now 3 on the x-axis)
+
+```{r}
+
+
+```
+
+#### Line Fitting
+
+We can fit a simple relationship to the data by adding another layer, `geom_smooth`:
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+### Challenge Set 3
+1. Modify the color and size of the points on the point layer in the previous example.
+  Hint: do not use the `aes` function.
+
+2. Modify your solution to the previous challenge so that the points are now a different shape and are colored by continent with new trendlines. Hint: The color argument can be used inside the aesthetic.
+
+
+## Multi-panel figures
+We start by making a subset of data including only countries located in the Americas. This includes 25 countries, which will begin to clutter the figure. Note that we apply a “theme” definition to rotate the x-axis labels to maintain readability. Nearly everything in ggplot2 is customizable.
+
+```{r}
+americas <- gapminder[gapminder$continent == "Americas",]
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
+  geom_line() + 
+  facet_wrap( ~ country) + 
+  theme(axis.text.x = element_text(angle = 45))
+```
+
+
+## Modifying text
+
+To clean this figure up for publication, we need to change some text elements.
+
+We can do this by adding some different layers.
+
+* **theme** layer - controls the axis text and overall text size.
+* **labs** function - Sets the labels for axes, plot title, and any legend
+* **aes** - Legend titles are set using same names used in `aes`
+* Below the color legend title is set using `color = "Continent"`, while the title of a fill legend would be set using `fill = "MyTitle"`.
+
+
+
+```{r}
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+
+## Exporting the plot
+
+Export a plot using `**ggsave()**` - 
+
+```{r}
+americas <- gapminder[gapminder$continent == "Americas",]
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
+  geom_line() + 
+  facet_wrap( ~ country) + 
+  theme(axis.text.x = element_text(angle = 45))
+```
+```{r}
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r}
+lifeExp_plot <- ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+
+ggsave(filename = "results/lifeExp.png", plot = lifeExp_plot, width = 12, height = 10, dpi = 300, units = "cm")
+```
+
+```{r}
+packageVersion("ggplot2")
+```
+
+
+#### Challenge Set 4
+Generate boxplots to compare life expectancy between the different continents during the available years.
+
+Advanced:
+    * Rename y axis as Life Expectancy.
+    * Remove x axis labels.
+
+
+
