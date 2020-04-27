@@ -30,25 +30,26 @@ analyses and results.
 * Writing reports in Word or [LaTeX](http://www.latex-project.org/) can incoporate analysis and ouput graphs together in one doc.
 * But tweaking the report and parameters can be difficult:
   * have to fix or change code, run it, get output and copy over to document
-  * will have to do this multiple times as you tweak, gets confusing
-* Having the code, analysis and output in one document that is runable helps
-* It makes changing formatting or analysis much easier and is easier to re-run with changes (no copying and pasting)
+  * will have to do this multiple times as you tweak, gets confusing, prone to error
+* Having the code, analysis and output in one document that is **runable** helps with this
+* Makes changing formatting or analysis much easier to maintain
+* Also, easier to re-run with changes (no copying and pasting to word or other typesetting systems)
 
 ## Literate programming
 
-* Ideally analysis reports are _reproducible_ documents 
-* If an
-error is discovered, or if some additional subjects are added to the
-data, you can just re-compile the report and get the new or corrected
+* Ideally analytical reports are _reproducible_ documents 
+  * If an error is discovered, or if some additional observations are added to the
+data, you can re-compile the report and get the new or corrected
 results. 
-* The key R package is [`knitr`](http://yihui.name/knitr/). 
+* Key R package is [`knitr`](http://yihui.name/knitr/). 
    * It lets you to create a document that is a mixture of text and chunks of
 code. 
 * When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
 * This sort of idea has been called **literate programming**.
-* `knitr` lets you to mix basically any sort of text with code from different programming languages, but we recommend that you use `R Markdown`, which mixes Markdown
-with R. 
+* `knitr` lets you to mix basically any sort of text with code from different programming languages 
+* We'll use `R Markdown` that primarily mixes Markdown
+with R - though you can use Python, SQL or other languages in R Markdown.
 * [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages (the name is a play on the word [markup](https://en.wikipedia.org/wiki/Markup_language) where you annotate a document with info to display text, e.g. html tags)
 
 
@@ -383,4 +384,5 @@ of the file.
 * [The Ecosystem of R Markdown](https://www.rstudio.com/resources/webinars/the-ecosystem-of-r-markdown/)
 * [Introducing Bookdown](https://www.rstudio.com/resources/webinars/introducing-bookdown/)
 * [R Markdown Tutorial for RLadies LA](https://github.com/aktilot/rmarkdown-tutorial)
+* [Sharing on Short Notice](https://resources.rstudio.com/webinars/sharing-on-short-notice-how-to-get-your-materials-online-with-r-markdown) - RStudio webinar on sharing R Markdown files as websites geared at instructors.
 

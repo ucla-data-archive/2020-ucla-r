@@ -66,8 +66,6 @@ _The following are supplemental guides_:
 
 
 
-
-
 ## Creating Plots Using ggplot2
 
 **ggplot2** is a library used in R to creative graphics and charts. The library is based on concepts of [The Grammar of Graphics by Leland Wilkinson](https://link.springer.com/book/10.1007%2F978-1-4757-3100-2), the idea that you can build every graph from same components:
@@ -78,7 +76,7 @@ _The following are supplemental guides_:
 
 
 
-![Basics of Grammar of Graphics](f01_ggplot-grammar.png)
+Basics of Grammar of Graphicsf01_ggplot-grammar.png
 
 ("Grammar of Graphics" - hence the "GG" in "ggplot2"!)
 
@@ -109,7 +107,7 @@ This is important to remember, so that when we begin creating graphics, we'll re
 
 Example: let's say, using gapminder data, we want to create a graph displaying the life expectancy of each country in relation to GDP per capita.
 
-![Life Expectancy based on GDP per capita](f02_01_lifeExp-gdp.png)
+Life Expectancy based on GDP per capitaf02_01_lifeExp-gdp.png
 **Observations**
 * What do you see when you look at this graphic?
 * How would you describe it?
@@ -145,7 +143,7 @@ We need to tell `ggplot` how we want to _visually represent the data_, which we 
 ## Layers
 * Using a scatterplot probably isn’t the best for visualizing change over time. Instead, let’s tell ggplot to visualize the data as a line plot.
 
-![Gapminder: Life Expectancy Over Time](f03_lifeExp-year.png)
+Gapminder: Life Expectancy Over Time(f03_lifeExp-year.png)
 
 * To our current chart, we'll add another aesthetic, called `**by**` and set it to one of the data variables, `country`
 * From our previous challenge, let's continue to differentiate each continent by color
@@ -321,6 +319,12 @@ Generate boxplots to compare life expectancy between the different continents du
 Advanced:
     * Rename y axis as Life Expectancy.
     * Remove x axis labels.
-
-
+    
+```{r}
+americas <- gapminder[gapminder$continent == "Americas",]
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp)) +
+  geom_line() + 
+  facet_wrap( ~ country) + 
+  theme(axis.text.x = element_text(angle = 45))
+```
 
