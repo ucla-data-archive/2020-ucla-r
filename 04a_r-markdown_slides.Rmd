@@ -20,10 +20,6 @@ background-image: url(https://github.com/ucla-data-archive/ucla-data-archive.git
 options(htmltools.dir.version = FALSE)
 ```
 
-???
-
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
-
 ---
 class: center, middle
 
@@ -40,14 +36,14 @@ class: inverse, center, middle
 
 # Today: 
 
-- Understand the value of writing reproducible reports
+- Understand the value of writing **reproducible reports**
 - Recognize and compile the basic components of an R Markdown file
-- Write and use markdown in 
-- Write R code chunks, and understand their purpose, structure and
+- Use markdown in a R Markdown document
+- Write **R code chunks**, and understand their purpose, structure and
   options
-- Knit a document that contains markdown and R code into html
-- Be aware of output formats an R Markdown file can be exported
-- Publish the output of your knitted R Markdown document to Netlify
+- **Knit** a document that contains markdown and R code into html
+- Be aware of other **output formats** an R Markdown file can be exported as
+- Publish the output of your knitted R Markdown document to **Netlify**
 
 ---
 
@@ -72,19 +68,45 @@ analyses and results.
 
 # Literate programming
 
-* Ideally analytical reports are _reproducible_ documents 
-  * If an error is discovered, or if some additional observations are added to the
-data, you can re-compile the report and get the new or corrected
-results. 
+* Ideally analytical reports should be _reproducible_ documents 
 * Key R package is [`knitr`](http://yihui.name/knitr/). 
-   * It lets you to create a document that is a mixture of text and chunks of
-code. 
 * When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
 * This sort of idea has been called **literate programming**.
-* `knitr` lets you to mix basically any sort of text with code from different programming languages 
-* We'll use `R Markdown` that primarily mixes Markdown
+
+???
+* Repro Docs: If an error is discovered, or if some additional observations are added to thedata, you can re-compile the report and get the new or corrected
+results. 
+* Knitr: lets you to create a document that is a mixture of text and chunks of
+code. 
+
+---
+
+![word tweet](word_tweet.jpg)
+
+---
+
+# R & Markdown 
+
+* Today, we'll use `R Markdown` that primarily mixes Markdown
 with R - though you can use Python, SQL or other languages in R Markdown.
 * [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages (the name is a play on the word [markup](https://en.wikipedia.org/wiki/Markup_language) where you annotate a document with info to display text, e.g. html tags)
+---
+class: inverse, center, middle
+
+# What this looks like
+
+---
+
+
+
+---
+
+![R Markdown Example](rmarkdown_example.png)
+
+---
+
+![Markdown](markdown_pandoc_formats.jpg)
+
 
 ---
