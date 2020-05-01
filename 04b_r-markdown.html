@@ -1671,6 +1671,9 @@ summary {
 <li>We’ll use <code>R Markdown</code> that primarily mixes Markdown with R - though you can use Python, SQL or other languages in R Markdown.</li>
 <li><a href="https://www.markdownguide.org/">Markdown</a> is a light-weight mark-up language for creating web pages (the name is a play on the word <a href="https://en.wikipedia.org/wiki/Markup_language">markup</a> where you annotate a document with info to display text, e.g. html tags)</li>
 </ul>
+<div id="start-here-after-slides" class="section level3">
+<h3>Start here after slides:</h3>
+</div>
 </div>
 <div id="creating-an-r-markdown-file" class="section level2">
 <h2>Creating an R Markdown file</h2>
@@ -1694,6 +1697,7 @@ output: html_document
 <ul>
 <li>Fields are optional - you can delete the ones you don’t want</li>
 <li>Double quotes optional needed if you include colon</li>
+<li>for date we can run a inline R function 2020-05-01</li>
 <li>RStudio creates the document with some example text to get you started.</li>
 <li>Note below that there are chunks like</li>
 </ul>
@@ -1707,6 +1711,7 @@ output: html_document
 ##  Max.   :25.0   Max.   :120.00</code></pre>
 <ul>
 <li>This is a code chunk that will be run by <code>knitr</code> and output the results inline.</li>
+<li>We can run it using the play button.</li>
 </ul>
 </div>
 <div id="markdown" class="section level2">
@@ -1721,26 +1726,29 @@ output: html_document
 <li>make things <strong>bold</strong> using two asterisks around what you want to bold, like this: <code>**bold**</code>, and you make things <em>italics</em> by using underscores, like this: <code>_italics_</code>.</li>
 <li>You can make a bulleted list by writing a list with hyphens or asterisks, like this:</li>
 </ol>
-<pre><code>* bold with double-asterisks
-* italics with underscores
-* code-type font with backticks</code></pre>
-<p>or like this:</p>
-<pre><code>- bold with double-asterisks
-- italics with underscores
-- code-type font with backticks</code></pre>
 <ul>
-<li><p>Each will appear as:</p></li>
-<li><p>bold with double-asterisks</p></li>
-<li><p>italics with underscores</p></li>
-<li><p>code-type font with backticks</p></li>
-<li><p>You can use whatever method you prefer, but <em>be consistent</em>. This maintains the readability of your code.</p></li>
-<li><p>You can make a <strong>numbered list</strong> by just using numbers.</p></li>
-<li><p>You can even use the same number over and over if you want:</p></li>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
 </ul>
-<pre><code>1. bold with double-asterisks
-1. italics with underscores
-1. code-type font with backticks</code></pre>
-<p>This will appear as:</p>
+<p>dashes also work:</p>
+<ul>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
+</ul>
+<p><strong>Each will appear as:</strong></p>
+<ul>
+<li>bold with double-asterisks</li>
+<li>italics with underscores</li>
+<li>code-type font with backticks</li>
+</ul>
+<p>Knit doc. you will need to reshare to capture that window.</p>
+<ul>
+<li>You can use whatever method you prefer, but <em>be consistent</em>. This maintains the readability of your code.</li>
+<li>You can make a <strong>numbered list</strong> by just using numbers.</li>
+<li>You can even use the same number over and over if you want:</li>
+</ul>
 <ol style="list-style-type: decimal">
 <li>bold with double-asterisks</li>
 <li>italics with underscores</li>
@@ -1754,23 +1762,20 @@ output: html_document
 ### Sub-section
 #### Sub-sub section</code></pre>
 <ul>
-<li><p><em>compile</em> the R Markdown document to html by clicking <kbd>Knit</kbd> button in the upper-left.</p></li>
-<li><p>You might have to install some packages, hit ok and let RStudio install packages.</p></li>
-<li><p>Ok now let’s try challenge 1</p></li>
+<li><em>compile</em> the R Markdown document to html by clicking <kbd>Knit</kbd> button in the upper-left.</li>
+<li>You might have to install some packages, hit ok and let RStudio install packages.</li>
 </ul>
-<blockquote>
-<h2 id="challenge-1">Challenge 1</h2>
-<p>Create a new R Markdown document. Delete all of the R code chunks and write a bit of Markdown (some sections, some italicized text, and an itemized list).</p>
-<p>Convert the document to a webpage. &gt; ## Solution to Challenge 1 &gt; &gt; In RStudio, select File &gt; New file &gt; R Markdown… &gt; &gt; Delete the placeholder text and add the following: &gt; &gt; <code>&gt; # Introduction &gt;  &gt; ## Background on Data &gt;  &gt; This report uses the *gapminder* dataset, which has columns that include: &gt;  &gt; * country &gt; * continent &gt; * year &gt; * lifeExp &gt; * pop &gt; * gdpPercap &gt;  &gt; ## Background on Methods &gt;  &gt;</code> &gt; &gt; Then click the ‘Knit’ button on the toolbar to generate an html document (webpage). {: .solution} {: .challenge}</p>
-</blockquote>
 </div>
 <div id="a-bit-more-markdown" class="section level2">
 <h2>A bit more Markdown</h2>
 <ul>
-<li><p>You can make a hyperlink like this: <code>[text to show](http://the-web-page.com)</code>.</p></li>
-<li><p>You can include an image file like this: <code>![caption](http://url/for/file)</code></p></li>
-<li><p>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2~</code> and superscripts (e.g., F<sup>2</sup>) with <code>F^2^</code>.</p></li>
-<li><p>If you know how to write equations in <a href="http://www.latex-project.org/">LaTeX</a>, you can use <code>$ $</code> and <code>$$ $$</code> to insert math equations, like <code>$E = mc^2$</code> and</p></li>
+<li>You can make a hyperlink like this: <code>[text to show](http://the-web-page.com)</code>.</li>
+<li>You can include an image file like this: <code>![caption](http://url/for/file)</code></li>
+<li>You can do subscripts (e.g., F<sub>2</sub>) with <code>F~2~</code> and superscripts (e.g., F<sup>2</sup>) with <code>F^2^</code>.</li>
+</ul>
+<p><img src="data:text/html;charset=UTF-8,%3C%21doctype%20html%3E%0A%3Chtml%3E%0A%20%20%20%20%3Chead%3E%0A%20%20%20%20%20%20%20%20%3Ctitle%3EImgur%3C%2Ftitle%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20http%2Dequiv%3D%22content%2Dtype%22%20content%3D%22text%2Fhtml%3Bcharset%3Dutf%2D8%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22copyright%22%20content%3D%22Copyright%202020%20Imgur%2C%20Inc%2E%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20id%3D%22viewport%22%20name%3D%22viewport%22%20content%3D%22width%3D960%2C%20user%2Dscalable%3Dyes%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Clink%20rel%3D%22stylesheet%22%20type%3D%22text%2Fcss%22%20href%3D%22%2F%2Fs%2Eimgur%2Ecom%2Fmin%2FsharePlayer%2Ecss%3F1588266641%22%20%2F%3E%0A%0A%20%20%20%20%20%20%20%20%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%23content%2C%20%23video%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20%20960px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%201200px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%23chrome%2C%20%23progress%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20960px%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%3C%2Fstyle%3E%0A%0A%20%20%20%20%20%20%20%20%3Clink%20rel%3D%22alternate%22%20type%3D%22application%2Fjson%2Boembed%22%20href%3D%22https%3A%2F%2Fapi%2Eimgur%2Ecom%2Foembed%2Ejson%3Furl%3Dhttps%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egifv%22%20title%3D%22Imgur%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Clink%20rel%3D%22alternate%22%20type%3D%22application%2Fxml%2Boembed%22%20href%3D%22https%3A%2F%2Fapi%2Eimgur%2Ecom%2Foembed%2Exml%3Furl%3Dhttps%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egifv%22%20title%3D%22Imgur%22%20%2F%3E%0A%0A%20%20%20%20%20%20%20%20%3Clink%20rel%3D%22canonical%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20href%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egifv%22%20%2F%3E%0A%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Asite%5Fname%22%20%20%20%20%20%20%20%20%20content%3D%22Imgur%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Atitle%22%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22Imgur%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Adescription%22%20%20%20%20%20%20%20content%3D%22846%20views%20on%20Imgur%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Atype%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22video%2Eother%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Aurl%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egifv%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Aimage%22%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Ejpg%3Fplay%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Avideo%3Awidth%22%20%20%20%20%20%20%20content%3D%22960%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Avideo%3Aheight%22%20%20%20%20%20%20content%3D%221200%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Avideo%22%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Emp4%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Avideo%3Asecure%5Furl%22%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Emp4%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20property%3D%22og%3Avideo%3Atype%22%20%20%20%20%20%20%20%20content%3D%22video%2Fmp4%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%0A%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Asite%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22%40imgur%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Adomain%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22imgur%2Ecom%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aapp%3Aid%3Agoogleplay%22%20%20%20%20%20%20%20%20%20%20content%3D%22com%2Eimgur%2Emobile%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Acard%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22player%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Atitle%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22Imgur%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Adescription%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22846%20views%20on%20Imgur%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aimage%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Ejpg%3Fplay%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aplayer%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egifv%3Ftwitter%23t%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aplayer%3Awidth%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22960%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aplayer%3Aheight%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%221200%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aplayer%3Astream%22%20%20%20%20%20%20%20%20%20%20%20%20%20%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Emp4%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22twitter%3Aplayer%3Astream%3Acontent%5Ftype%22%20content%3D%22video%2Fmp4%22%3E%0A%20%20%20%20%20%20%20%20%3Cmeta%20name%3D%22monetization%22%20content%3D%22%24spsp%2Ecoil%2Ecom%2Fdonate%2Fimgur%22%3E%0A%20%20%20%20%20%20%20%20%3C%21%2D%2D%20Google%20Tag%20Manager%20%2D%2D%3E%0A%3Cscript%3E%28function%28w%2Cd%2Cs%2Cl%2Ci%29%7Bw%5Bl%5D%3Dw%5Bl%5D%7C%7C%5B%5D%3Bw%5Bl%5D%2Epush%28%7B%27gtm%2Estart%27%3A%0Anew%20Date%28%29%2EgetTime%28%29%2Cevent%3A%27gtm%2Ejs%27%7D%29%3Bvar%20f%3Dd%2EgetElementsByTagName%28s%29%5B0%5D%2C%0Aj%3Dd%2EcreateElement%28s%29%2Cdl%3Dl%21%3D%27dataLayer%27%3F%27%26l%3D%27%2Bl%3A%27%27%3Bj%2Easync%3Dtrue%3Bj%2Esrc%3D%0A%27%2F%2Fwww%2Egoogletagmanager%2Ecom%2Fgtm%2Ejs%3Fid%3D%27%2Bi%2Bdl%3Bf%2EparentNode%2EinsertBefore%28j%2Cf%29%3B%0A%7D%29%28window%2Cdocument%2C%27script%27%2C%27dataLayer%27%2C%27GTM%2DM6N38SF%27%29%3B%3C%2Fscript%3E%0A%3C%21%2D%2D%20End%20Google%20Tag%20Manager%20%2D%2D%3E%0A%0A%0A%20%20%20%20%20%20%20%20%3C%21%2D%2D%5Bif%20lte%20IE%208%5D%3E%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22%2F%2Fs%2Eimgur%2Ecom%2Fmin%2Fiepoly%2Ejs%3F1588266641%22%3E%3C%2Fscript%3E%0A%3C%21%5Bendif%5D%2D%2D%3E%0A%20%20%20%20%3C%2Fhead%3E%0A%20%20%20%20%3Cbody%20id%3D%22body%22%3E%0A%20%20%20%20%20%20%20%20%3C%21%2D%2D%20Google%20Tag%20Manager%20%28noscript%29%20%2D%2D%3E%0A%3Cnoscript%3E%3Ciframe%20src%3D%22https%3A%2F%2Fwww%2Egoogletagmanager%2Ecom%2Fns%2Ehtml%3Fid%3DGTM%2DM6N38SF%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3D%220%22%20width%3D%220%22%20style%3D%22display%3Anone%3Bvisibility%3Ahidden%22%3E%3C%2Fiframe%3E%3C%2Fnoscript%3E%0A%3C%21%2D%2D%20End%20Google%20Tag%20Manager%20%28noscript%29%20%2D%2D%3E%0A%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22content%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cscript%20type%3D%22text%2Fjavascript%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20window%2Eimage%20%20%20%20%20%20%20%20%3D%20%27PfpZMsZ%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20window%2Eimage%5Fsize%20%20%20%3D%20%276845651%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20window%2Eimage%5Fwidth%20%20%3D%20%27960%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20window%2Eimage%5Fheight%20%3D%20%271200%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20window%2Ecdn%5Furl%20%20%20%20%20%20%3D%20%27%2F%2Fi%2Eimgur%2Ecom%27%3B%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20if%28navigator%2EuserAgent%2Ematch%28%2FFirefox%2F%29%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20document%2Ebody%2EclassName%20%3D%20document%2Ebody%2EclassName%20%2B%20%27%20firefox%27%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fscript%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22vid%2Dcontainer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22post%2Dimage%22%3E%0A%20%20%20%20%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22video%2Dcontainer%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cscript%20type%3D%22text%2Fjavascript%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20var%20videoItem%20%3D%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20looping%3A%20%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20width%3A%20%20%20%20960%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20height%3A%20%20%201200%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20size%3A%20%20%20%20%206845651%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20gifUrl%3A%20%20%20%27%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egif%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20forceGif%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20prefer%5Fvideo%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20hash%3A%20%20%20%20%20%27PfpZMsZ%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20forceLoadAll%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fscript%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cvideo%20poster%3D%22%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZh%2Ejpg%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20preload%3D%22auto%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20autoplay%3D%22autoplay%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20muted%3D%22muted%22%20%20loop%3D%22loop%22%0A%20%20%20%20%20%20%20%20%20%20%20%20webkit%2Dplaysinline%3E%3C%2Fvideo%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22video%2Delements%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Csource%20src%3D%22%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Emp4%22%20type%3D%22video%2Fmp4%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cprogress%20value%3D%220%22%20max%3D%22100%22%20min%3D%220%22%3E%3C%2Fprogress%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22video%2Dloader%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cscript%20id%3D%22scriptPfpZMsZ%22%20type%3D%22text%2Fjavascript%22%20src%3D%22%2F%2Fs%2Eimgur%2Ecom%2Fmin%2FimageViewerInline%2Ejs%3F1588266641%22%3E%3C%2Fscript%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20itemprop%3D%22thumbnailUrl%22%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZh%2Ejpg%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20itemprop%3D%22contentURL%22%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Emp4%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cmeta%20itemprop%3D%22embedURL%22%20content%3D%22https%3A%2F%2Fi%2Eimgur%2Ecom%2FPfpZMsZ%2Egifv%22%20%2F%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%0A%3C%2Fdiv%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cscript%20type%3D%22text%2Fjavascript%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20pixel%5Furl%20%3D%20%27%2F%2Fi%2Eimgur%2Ecom%2Fimageview%2Egif%3Fa%3DPfpZMsZ%26r%3D%27%20%2B%20encodeURIComponent%28document%2Ereferrer%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20var%20pixel%20%3D%20document%2EcreateElement%28%27img%27%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20pixel%2Esrc%20%3D%20pixel%5Furl%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fscript%3E%0A%0A%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20id%3D%22chrome%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22icon%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2F%2Fimgur%2Ecom%2FPfpZMsZ%22%3E%3Cimg%20src%3D%22%2F%2Fi%2Eimgur%2Ecom%2Ffavicon%2Eico%22%20%2F%3E%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22imgur%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2F%2Fimgur%2Ecom%2FPfpZMsZ%22%3EImgur%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22controls%22%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Ca%20href%3D%22%2F%2Fimgur%2Ecom%2Fdownload%2FPfpZMsZ%22%3Edownload%3C%2Fa%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%3Cdiv%20class%3D%22clear%22%3E%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3C%2Fdiv%3E%0A%20%20%20%20%20%20%20%20%3Cscript%20type%3D%22text%2Fjavascript%22%20src%3D%22%2F%2Fs%2Eimgur%2Ecom%2Fmin%2FsharePlayer%2Ejs%3F1588266641%22%3E%3C%2Fscript%3E%0A%0A%20%20%20%20%20%20%20%20%3Cscript%3E%0A%20%20%20%20%2F%2F%20implemented%20following%20recommendations%20here%3A%20https%3A%2F%2Fdocs%2Ecoil%2Ecom%2Foauth%2Dweb%2Dmonetization%0A%20%20%20%20var%20owmto%3B%0A%20%20%20%20function%20getBtpToken%28successCallback%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28Imgur%2EEnvironment%20%26%26%20Imgur%2EEnvironment%2Esubscription%2EisSubscribed%20%3D%3D%3D%20false%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20return%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%24%2Eajax%28%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20url%3A%20%27https%3A%2F%2Fapi%2Eimgur%2Ecom%27%20%2B%20%27%2Faccount%2Fv1%2Faccounts%2Fme%2Fsubscriptions%2Fcoil%2Fbtp%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20xhrFields%3A%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20withCredentials%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20success%3A%20successCallback%0A%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20function%20setRefreshTimeout%28refreshFunc%29%20%7B%0A%20%20%20%20%20%20%20%20if%20%28owmto%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20clearTimeout%28owmto%29%3B%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%2F%2F%20refresh%20btpToken%20every%2025%20minutes%2E%0A%20%20%20%20%20%20%20%20owmto%20%3D%20setTimeout%28refreshFunc%2C%201%2E5e%2B6%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20function%20refreshBtp%28%29%20%7B%0A%20%20%20%20%20%20%20%20var%20refreshCB%20%3D%20function%28data%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20document%2EcoilMonetizationPolyfill%2ErefreshBtpToken%28data%2Ebtp%5Ftoken%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20setRefreshTimeout%28refreshBtp%29%3B%0A%20%20%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20%20%20getBtpToken%28refreshCB%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20function%20initMonetizationFallback%28%29%7B%0A%20%20%20%20%20%20%20%20var%20initCB%20%3D%20function%28data%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20Imgur%2EgetInstance%28%29%2EbindMonetizationStartListener%28%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20document%2EcoilMonetizationPolyfill%2Einit%28%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20btpToken%3A%20data%2Ebtp%5Ftoken%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20btpEndpoint%3A%20%27btp%2Bwss%3A%2F%2Fcoil%2Ecom%2Fbtp%27%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20window%2EaddEventListener%28%27focus%27%2C%20refreshBtp%29%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20setRefreshTimeout%28refreshBtp%29%3B%0A%20%20%20%20%20%20%20%20%7D%3B%0A%0A%20%20%20%20%20%20%20%20getBtpToken%28initCB%29%3B%0A%20%20%20%20%7D%0A%0A%20%20%20%20if%20%28document%2Emonetization%29%20%7B%0A%20%20%20%20%20%20%20%20document%2EmonetizationExtensionInstalled%20%3D%20true%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20document%2Emonetization%20%3D%20document%2EcreateElement%28%27div%27%29%3B%0A%20%20%20%20%20%20%20%20document%2Emonetization%2Estate%20%3D%20%27stopped%27%3B%0A%20%20%20%20%20%20%20%20var%20head%20%3D%20document%2EgetElementsByTagName%28%27head%27%29%5B0%5D%3B%0A%20%20%20%20%20%20%20%20var%20script%20%3D%20document%2EcreateElement%28%27script%27%29%3B%0A%20%20%20%20%20%20%20%20script%2Etype%20%3D%20%27text%2Fjavascript%27%3B%0A%20%20%20%20%20%20%20%20script%2Edefer%20%3D%20true%0A%20%20%20%20%20%20%20%20script%2Esrc%20%3D%20%27https%3A%2F%2Fcdn%2Ecoil%2Ecom%2Fcoil%2Doauth%2Dwm%2Ev5%2Ebeta%2Ejs%27%3B%0A%20%20%20%20%20%20%20%20script%2Eonload%20%3D%20function%28%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20initMonetizationFallback%28%29%3B%0A%20%20%20%20%20%20%20%20%7D%3B%0A%20%20%20%20%20%20%20%20head%2EappendChild%28script%29%3B%0A%20%20%20%20%7D%0A%3C%2Fscript%3E%0A%0A%20%20%20%20%3C%2Fbody%3E%0A%3C%2Fhtml%3E%0A" /></p>
+<ul>
+<li>If you know how to write equations in <a href="http://www.latex-project.org/">LaTeX</a>, you can use <code>$ $</code> and <code>$$ $$</code> to insert math equations, like <code>$E = mc^2$</code> and</li>
 </ul>
 <pre><code>$$y = \mu + \sum_{i=1}^p \beta_i x_i + \epsilon$$</code></pre>
 <ul>
@@ -1785,9 +1790,15 @@ output: html_document
 </ul>
 <pre class="r"><code>gapminder &lt;- read_csv(&quot;gapminder.csv&quot;)</code></pre>
 <ul>
-<li>That is, you place a chunk of R code between <code>```{r chunk_name}</code> and <code>```</code>.</li>
-<li>You should give each chunk a unique name, as they will help you to fix errors and, if any graphs are produced, the file names are based on the name of the code chunk that produced them.</li>
+<li><p>That is, you place a chunk of R code between <code>```{r chunk_name}</code> and <code>```</code>.</p></li>
+<li><p>You should give each chunk a unique name, as they will help you to fix errors and, if any graphs are produced, the file names are based on the name of the code chunk that produced them.</p></li>
+<li><p>Ok now let’s try some challenges in breakout rooms</p></li>
 </ul>
+<blockquote>
+<h2 id="challenge-1">Challenge 1</h2>
+<p>Create a new R Markdown document. Delete all of the R code chunks and write a bit of Markdown (some sections, some italicized text, and an itemized list).</p>
+<p>Convert the document to a webpage. &gt; ## Solution to Challenge 1 &gt; &gt; In RStudio, select File &gt; New file &gt; R Markdown… &gt; &gt; Delete the placeholder text and add the following: &gt; &gt; <code>&gt; # Introduction &gt;  &gt; ## Background on Data &gt;  &gt; This report uses the *gapminder* dataset, which has columns that include: &gt;  &gt; * country &gt; * continent &gt; * year &gt; * lifeExp &gt; * pop &gt; * gdpPercap &gt;  &gt; ## Background on Methods &gt;  &gt;</code> &gt; &gt; Then click the ‘Knit’ button on the toolbar to generate an html document (webpage). {: .solution} {: .challenge}</p>
+</blockquote>
 <blockquote>
 <h2 id="challenge-2">Challenge 2</h2>
 <p>Add code chunks to:</p>
@@ -1844,22 +1855,7 @@ plot(lifeExp ~ year, data = gapminder)
 <li><p><code>fig.path</code> option defines where the figures will be saved.</p></li>
 <li><p><code>/</code> here is really important; without it, the figures would be saved in the standard place but just with names that begin with <code>Figs</code>.</p></li>
 <li><p>If you have multiple R Markdown files in a common directory, you might want to use <code>fig.path</code> to define separate prefixes for the figure file names, like <code>fig.path=&quot;Figs/cleaning-&quot;</code> and <code>fig.path=&quot;Figs/analysis-&quot;</code>.</p></li>
-</ul>
-<blockquote>
-<h2 id="challenge-3">Challenge 3</h2>
-<p>Use chunk options to control the size of a figure and to hide the code.</p>
-<blockquote>
-<h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
-<pre>
-```{r echo = FALSE, fig.width = 3}
-plot(faithful)
-```
-</pre>
-<p>{: .solution} {: .challenge}</p>
-</blockquote>
-</blockquote>
-<ul>
-<li>You can review all of the <code>R</code> chunk options by navigating to the “R Markdown Cheat Sheet” under the “Cheatsheets” section of the “Help” field in the toolbar at the top of RStudio.</li>
+<li><p>You can review all of the <code>R</code> chunk options by navigating to the “R Markdown Cheat Sheet” under the “Cheatsheets” section of the “Help” field in the toolbar at the top of RStudio.</p></li>
 </ul>
 </div>
 <div id="inline-r-code" class="section level2">
@@ -1879,6 +1875,19 @@ plot(faithful)
 <blockquote>
 <h2 id="solution-to-challenge-4">Solution to Challenge 4</h2>
 <p>Here’s some inline code to determine that 2 + 2 = <code>`r 2+2`</code>.</p>
+<p>{: .solution} {: .challenge}</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h2 id="challenge-3">Challenge 3</h2>
+<p>Use chunk options to control the size of a figure and to hide the code.</p>
+<blockquote>
+<h2 id="solution-to-challenge-3">Solution to Challenge 3</h2>
+<pre>
+```{r echo = FALSE, fig.width = 3}
+plot(faithful)
+```
+</pre>
 <p>{: .solution} {: .challenge}</p>
 </blockquote>
 </blockquote>

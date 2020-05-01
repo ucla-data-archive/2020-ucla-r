@@ -18,7 +18,8 @@ background-image: url(https://github.com/ucla-data-archive/ucla-data-archive.git
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
-```
+#install.packages('xaringan')
+ # need this package for these slides```
 
 ---
 class: center, middle
@@ -52,17 +53,16 @@ class: inverse, center, middle
 * Data analysts write a lot of reports, describing their
 analyses and results.
 * Writing reports in Word or [LaTeX](http://www.latex-project.org/) can incoporate analysis and ouput graphs together in one doc.
-* But tweaking the report and parameters can be difficult:
-  * have to fix or change code, run it, get output and copy over to document
-  * will have to do this multiple times as you tweak, gets confusing, prone to error
+* But tweaking the report and parameters can be difficult.
 * Having the code, analysis and output in one document that is **runable** helps with this
-* Makes changing formatting or analysis much easier to maintain
-* Also, easier to re-run with changes (no copying and pasting to word or other typesetting systems)
+* Makes changing formatting or analysis much easier to maintain and recreate. 
 
 ???
 
 * Beginners often write R scripts & email those scripts & graphs around.
 * This can be problematic and cumbersome 
+* have to fix or change code, run it, get output and copy over to document
+* will have to do this multiple times as you tweak, gets confusing, prone to error
 
 ---
 
@@ -72,10 +72,9 @@ analyses and results.
 * Key R package is [`knitr`](http://yihui.name/knitr/). 
 * When the document is processed by `knitr`, chunks of code will
 be executed, and graphs or other results inserted into the final document.
-* This sort of idea has been called **literate programming**.
 
 ???
-* Repro Docs: If an error is discovered, or if some additional observations are added to thedata, you can re-compile the report and get the new or corrected
+* Repro Docs: If an error is discovered, or if some additional observations are added to the data, you can re-compile the report and get the new or corrected
 results. 
 * Knitr: lets you to create a document that is a mixture of text and chunks of
 code. 
@@ -86,27 +85,104 @@ code.
 
 ---
 
+### Getting the analysis right is only one link
+
+Process, packaging, and presentation are often the weak links in the chain. 
+![](https://github.com/datacarpentry/rr-literate-programming/raw/gh-pages/media/brokenChain.jpg)
+
+---
+
 # R & Markdown 
 
 * Today, we'll use `R Markdown` that primarily mixes Markdown
 with R - though you can use Python, SQL or other languages in R Markdown.
 * [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages (the name is a play on the word [markup](https://en.wikipedia.org/wiki/Markup_language) where you annotate a document with info to display text, e.g. html tags)
+
 ---
+
 class: inverse, center, middle
 
-# What this looks like
+# Markdown
 
 ---
 
+## What is Markdown?
 
+* Markdown is a particular type of markup language. Markup languages are designed to produce documents from plain text.
+* You may be familiar with LaTeX, another (though less human friendly) text markup language.
+* Tools render markdown to different formats (for example, HTML/pdf/Word).
+  * The main tool for rendering Markdown is `pandoc`.
 
 ---
 
-![R Markdown Example](rmarkdown_example.png)
+# Markdown
+
+* **Markdown** Easy to write and read in an editor.
+* **HTML** Easy to publish and read on web.
+* Uses symbols like asterick, pound, underscore to mark up text 
+* The marked-up text gets _converted_ to html (or other formats), replacing the marks with the proper html code/formatting.
 
 ---
+
+#### What it looks like: 
+![Markdown syntax](markdown.png)
+
+---
+
+### Markdown can be rendered to multiple formats using pandoc
 
 ![Markdown](markdown_pandoc_formats.jpg)
 
 
 ---
+
+class: inverse, center, middle
+
+# R Markdown
+
+---
+
+## R Markdown
+
+R Markdown is rendered to Markdown. The strength of R Markdown, is that with an easy syntax, it is possible to mix ideas, code, and generated results seamlessly.
+
+---
+
+#### What this looks like. 
+
+![R Markdown Example](rmarkdown_example.png)
+
+---
+
+### We can play code inline
+
+![play code](play-cunks.png)
+
+
+---
+
+### Chunk options
+
+![Chunk options](chunk-options.png)
+
+---
+
+### Knit the document
+
+![knit](knit-rmarkdown.png)
+
+---
+
+### Knitted document
+
+![Knitted](rmarkdown-knitted.png)
+
+--- 
+
+## What we will do: 
+
+* Create a R Markdown document
+* Add some markdown 
+* Add code chunks 
+* Compile document
+* Pubulish on web! 

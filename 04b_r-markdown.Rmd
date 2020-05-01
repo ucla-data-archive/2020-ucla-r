@@ -52,6 +52,7 @@ be executed, and graphs or other results inserted into the final document.
 with R - though you can use Python, SQL or other languages in R Markdown.
 * [Markdown](https://www.markdownguide.org/) is a light-weight mark-up language for creating web pages (the name is a play on the word [markup](https://en.wikipedia.org/wiki/Markup_language) where you annotate a document with info to display text, e.g. html tags)
 
+### Start here after slides: 
 
 ## Creating an R Markdown file
 
@@ -75,6 +76,7 @@ output: html_document
 
 * Fields are optional - you can delete the ones you don't want
 * Double quotes optional needed if you include colon
+* for date we can run a inline R function `r Sys.Date()`
 * RStudio creates the document with some example text to get you
 started. 
 * Note below that there are chunks like
@@ -84,6 +86,7 @@ summary(cars)
 ```
 
 * This is a code chunk that will be run by `knitr` and output the results inline. 
+* We can run it using the play button.
 
 ## Markdown
 
@@ -98,37 +101,28 @@ summary(cars)
 `_italics_`.
 3. You can make a bulleted list by writing a list with hyphens or asterisks, like this:
 
-```
+
 * bold with double-asterisks
 * italics with underscores
 * code-type font with backticks
-```
 
-or like this:
-
-```
-- bold with double-asterisks
-- italics with underscores
-- code-type font with backticks
-```
-
-* Each will appear as:
+dashes also work: 
 
 - bold with double-asterisks
 - italics with underscores
 - code-type font with backticks
 
-*  You can use whatever method you prefer, but *be consistent*. This maintains the readability of your code.
+**Each will appear as:**
+
+- bold with double-asterisks
+- italics with underscores
+- code-type font with backticks
+
+Knit doc. you will need to reshare to capture that window. 
+
+* You can use whatever method you prefer, but *be consistent*. This maintains the readability of your code.
 * You can make a **numbered list** by just using numbers.
 * You can even use the same number over and over if you want:
-
-```
-1. bold with double-asterisks
-1. italics with underscores
-1. code-type font with backticks
-```
-
-This will appear as:
 
 1. bold with double-asterisks
 1. italics with underscores
@@ -143,45 +137,9 @@ This will appear as:
 #### Sub-sub section
 ```
 
+
 * _compile_ the R Markdown document to html by clicking <kbd>Knit</kbd> button in the upper-left.
 * You might have to install some packages, hit ok and let RStudio install packages. 
-
-* Ok now let's try challenge 1 
-
-> ## Challenge 1
->
-> Create a new R Markdown document. Delete all of the R code chunks
-> and write a bit of Markdown (some sections, some italicized
-> text, and an itemized list).
->
-> Convert the document to a webpage.
-> > ## Solution to Challenge 1
-> >
-> > In RStudio, select File > New file > R Markdown... 
-> > 
-> > Delete the placeholder text and add the following:
-> > 
-> > ```
-> > # Introduction
-> > 
-> > ## Background on Data
-> > 
-> > This report uses the *gapminder* dataset, which has columns that include:
-> > 
-> > * country
-> > * continent
-> > * year
-> > * lifeExp
-> > * pop
-> > * gdpPercap
-> > 
-> > ## Background on Methods
-> > 
-> > ```
-> > 
-> > Then click the 'Knit' button on the toolbar to generate an html document (webpage).
-> {: .solution}
-{: .challenge}
 
 
 ## A bit more Markdown
@@ -221,37 +179,6 @@ and <code>&#96;&#96;&#96;</code>.
 * You should give each chunk a unique name, as they will help you to fix errors and, if any graphs are produced, the file names are based on the name of the code chunk that
 produced them.
 
-> ## Challenge 2
->
-> Add code chunks to:
->
-> * Load the ggplot2 package
-> * Read the gapminder data
-> * Create a plot
-> 
-> > ## Solution to Challenge 2
-> > 
-> > <pre>
-> > &#96;&#96;&#96;{r load-ggplot2}
-> > library("ggplot2")
-> > &#96;&#96;&#96;
-> > </pre>
-> > 
-> > <pre>
-> > &#96;&#96;&#96;{r read-gapminder-data}
-> > gapminder <- read.csv("gapminder.csv")
-> > &#96;&#96;&#96;
-> > </pre>
-> > 
-> > <pre>
-> > &#96;&#96;&#96;{r make-plot}
-> > plot(lifeExp ~ year, data = gapminder)
-> > &#96;&#96;&#96;
-> > </pre>
-> > 
-> {: .solution}
-{: .challenge}
-
 ## How things get compiled
 
 * When you press the "Knit" button, the R Markdown document is
@@ -264,6 +191,46 @@ produced, links to those figures are included.
 html file, with the figures embedded.
 
 ![How R markdown gets compiled](rmarkdown_compiled_process.png)
+
+* Ok now let's try some challenges in breakout rooms 
+
+## Breakout Room 1 
+
+> ## Challenge 1
+>
+> 1. Create a new R Markdown document. Delete all of the R code chunks
+> 2. Make a header (H2) using markdown with your name, hint, `##`
+> 3. On the next line, make a bullet point and add your department
+> 4. Add another bullet point and provide a link to your department or workplace
+> 5. After the bullets, write a bit about your research area or what you might like to do in R. 
+>
+> Convert the document to a webpage.
+
+> ## Challenge 2
+>
+> To the document you created in Challenge 1, add a code chunk, by selecting <kbd>Insert</kbd> and <kbd>R</kbd>. You can copy the below code chunk and then fill in the blanks. 
+> * Load the ggplot2 package
+> * Read the gapminder data
+> * Create a plot
+> * Change eval=FALSE to eval=TRUE - this tells knit to either run or not run code. 
+> * See if you can figure out how to do this via the gear control near the play button 
+> * Knit the document
+
+```{r challenge-2, eval=FALSE}
+library(______)
+library(______)
+ggplot(gapminder, aes()) +
+  geom_____()
+```
+
+> ## Challenge 3
+>
+> 1. Now create a new R Markdown document, but this time select "Presentation" and "HTML ioslides" option
+> 2. Review how the slides are structured. `##` creates a new slide
+> 3. Add some of your text from challenge 1 too slides. 
+> 4. Add an image to a slide. 
+> 5. Knit & share your screen with your breakout partners.
+>
 
 ## Chunk options
 
@@ -298,24 +265,6 @@ the standard place but just with names that begin with `Figs`.
 * If you have multiple R Markdown files in a common directory, you might
 want to use `fig.path` to define separate prefixes for the figure file
 names, like `fig.path="Figs/cleaning-"` and `fig.path="Figs/analysis-"`.
-
-
-> ## Challenge 3
->
-> Use chunk options to control the size of a figure and to hide the
-> code.
-> 
-> > ## Solution to Challenge 3
-> > 
-> > <pre>
-> > &#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
-> > plot(faithful)
-> > &#96;&#96;&#96;
-> > </pre>
-> > 
-> {: .solution}
-{: .challenge}
-
 * You can review all of the `R` chunk options by navigating to
 the "R Markdown Cheat Sheet" under the "Cheatsheets" section 
 of the "Help" field in the toolbar at the top of RStudio.
@@ -340,6 +289,7 @@ chunk (which is the same as `echo=FALSE` and `results="hide"`).
 function in the [R/broman](https://github.com/kbroman/broman) package handles
 this.
 
+## breakout 2 
 > ## Challenge 4
 >
 > Try out a bit of in-line R code.
@@ -352,6 +302,22 @@ this.
 > {: .solution}
 {: .challenge}
 
+
+> ## Challenge 3
+>
+> Use chunk options to control the size of a figure and to hide the
+> code.
+> 
+> > ## Solution to Challenge 3
+> > 
+> > <pre>
+> > &#96;&#96;&#96;{r echo = FALSE, fig.width = 3}
+> > plot(faithful)
+> > &#96;&#96;&#96;
+> > </pre>
+> > 
+> {: .solution}
+{: .challenge}
 
 ## Other output options
 
