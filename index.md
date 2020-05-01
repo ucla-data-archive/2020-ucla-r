@@ -10,6 +10,6 @@ Go to GitHub Pages view <https://ucla-data-archive.github.io/2020-ucla-r/> for t
   * lesson: (html, [Rmd](03_r-markdown.Rmd)), 
   * GGGPLOT extra lesson ([html](03b_ggplot-extras.html), [Rmd](03b_ggplot-extras.Rmd)) 
   * GGANIMATE example ([html](03-animate-ex.html), [Rmd](03-animate-ex.rmd))
-* May 1: Producing Reports with knitr ([html](04_r-markdown.html), [rmd](04_r-markdown.html)) - @jt14den 
+* May 1: Producing Reports with knitr ([html](04_r-markdown.html), [rmd](04_r-markdown.html), [slide](04a_r-markdown_slides.html)) - @jt14den 
 
  Zoom recordings of the workshops are available [available](https://doi.org/10.25346/S6/ZJKUAC). 
