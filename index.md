@@ -5,7 +5,7 @@ Lecture notes &amp; code for [UCLA R workshop](https://ucla-data-archive.github.
 Go to GitHub Pages view <https://ucla-data-archive.github.io/2020-ucla-r/> for the below links to work. 
 
 * April 10: Basics of R ([html](basics-of-r.html), [Rmd](basics-of-r.Rmd)) - @kjallen & @jmjamison
-* April 17: Data cleaning and preparation in R - @kjallen & @jmjamison
+* April 17: Data cleaning and preparation in R [R code](02-r-code.R) - @kjallen & @jmjamison
 * April 24: Creating Publication-Quality Graphics with GGPLOT2 - @leighphan & @jt14den
   * lesson: (html, [Rmd](03_r-markdown.Rmd)), 
   * GGGPLOT extra lesson ([html](03b_ggplot-extras.html), [Rmd](03b_ggplot-extras.Rmd)) 

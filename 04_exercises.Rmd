@@ -1,0 +1,36 @@
+---
+title: "R Markdown Exercises"
+author: "Tim Dennis"
+date: "4/30/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown Exercises 
+
+> ## Challenge 1
+>
+> Create a new R Markdown document. Delete all of the R code chunks
+> and write a bit of Markdown (some sections, some italicized
+> text, and an itemized list).
+>
+> Convert the document to a webpage.
+
+> ## Challenge 1a
+>
+> Edit your existing R Markdown document
+> and write a bit of Markdown (some sections, some italicized
+> text, and an itemized list).
+>
+> Convert the document to a webpage.
+
+> ## Challenge 2
+>
+> Add code chunks to:
+>
+> * Load the ggplot2 package
+> * Read the gapminder data
+> * Create a plot
